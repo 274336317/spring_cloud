@@ -2,7 +2,7 @@ server:
      port: 8081
 spring:
      application:
-         name: user-service
+         name: mackerelpike-user-service
      datasource:
          url: jdbc:postgresql://localhost:5432/mackerelpike
          username: postgres
@@ -12,3 +12,8 @@ mybatis:
       config-locations: classpath:mybatis/mybatis-config.xml
       mapper-locations: classpath:mybatis/mapper/*.xml
       type-aliases-package: com.mackerelpike.springcloud.user_service.po
+
+eureka:
+      client:
+         serviceUrl:
+            defaultZone: http://localhost:8082/eureka/
