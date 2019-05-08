@@ -1,0 +1,40 @@
+server:
+     port: 8084
+spring:
+     application:
+         name: mackerelpike-service-gateway
+     cloud:
+       gateway:
+         discovery:
+           locator:
+             enabled: true
+             lowerCaseServiceId: true
+         routes:
+         - id: user_service_route
+           uri: lb://MACKERELPIKE-USER-SERVICE
+           predicates:
+           - Path=/user/**
+           filters:
+           - name: Hystrix
+             args:
+               name: fallbackcmd
+               fallbackUri: forward:/fallback
+eureka:
+      client:
+         serviceUrl:
+            defaultZone: http://localhost:8082/eureka/
+            
+
+hystrix:
+   command:
+     default:
+       execution:
+         isolation:
+           thread:
+             timeoutInMilliseconds: 1000
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
