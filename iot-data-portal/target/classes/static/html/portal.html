@@ -4,10 +4,61 @@
 <title>数据大屏</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- THEME CSS -->
+    <link href="/bimviz/sdk/third/css/essentials.css" rel="stylesheet" />
+
+    <link href="/bimviz/sdk/viz/ui/default.css" rel="stylesheet" type="text/css" />
+	<link href="/bimviz/sdk/third/colpick/css/colpick.css" rel="stylesheet" />
+
 <link rel="stylesheet" href="/bootstrap-4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/portal.css">
+
 <script src="/jquery-3.3.1/jquery-3.3.1.min.js"></script>
 <script src="/popper/popper.min.js"></script>
 <script src="/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/echarts/echarts.min.js"></script>
+
+
+    <script src="/bimviz/sdk/third/jquery-1.10.2.min.js"></script>
+    <script src="/bimviz/sdk/third/jquery-ui.min.js"></script>
+    <script src="/bimviz/sdk/third/jquery-dialog.js"></script>
+    <script src="/bimviz/sdk/third/bootstrap.min.js"></script>
+    <script src="/bimviz/sdk/third/jstree/jstree.js"></script>
+    <script src="/bimviz/sdk/third/jquery-slider/jquery-ui-slider-pips.min.js"></script>
+    <script src="/bimviz/sdk/third/toolbar/jquery.toolbar.js"></script>
+	<script src="/bimviz/sdk/third/jCanvas.js"></script>
+	<script src="/bimviz/sdk/third/html2canvas-1.0.0/html2canvas.min.js"></script>
+	<script src="/bimviz/sdk/third/colpick/js/colpick.js"></script>
+	<script src="/bimviz/sdk/third/d3/d3.v4.min.js"></script>
+	<script src="/bimviz/sdk/third/d3/d3-selection-multi.v0.4.min.js"></script>
+    <script src="/bimviz/sdk/viz/bimviz.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultMessageControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultToolBar.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultFileControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultTreesVisibilityControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultDomainControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultPropertyControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultSearchControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultMarkControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultMarkSimpleListControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultBuildingStoreyControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultRoamingSettingControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultTreesHighlightControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultSelectionSetControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultDatabaseQueryControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultCameraBookmarkControl.js"></script>
+    <script src="/bimviz/sdk/viz/ui/DefaultFixedClipControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultMeasureControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultRectSelectControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultHtmlMarkerControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultFileLoadControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultBimSpaceControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultMarkupControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultPlanViewControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultStoreyGridControl.js"></script>
+	<script src="/bimviz/sdk/viz/ui/DefaultRoamPathControl.js"></script>
+
 </head>
 <body>
 	<div class="container-fluid">
@@ -22,7 +73,7 @@
 								<p style="font-size: .7em;">含氧量</p> </a></li>
 						<li class="nav-item"><a class="nav-link" href="#" style="padding: .5em .2em"><p style="margin-bottom: 0em;">20 ℃</p>
 								<p style="font-size: .7em;">温度</p> </a></li>
-						<li class="nav-item"><a class="nav-link" href="#" style="padding: .5em .2em"><p style="margin-bottom: 0em;">20</p>
+						<li class="nav-item"><a class="nav-link" href="#" style="padding: .5em .2em"><p style="margin-bottom: 0em;">20%</p>
 								<p style="font-size: .7em;">湿度</p> </a></li>
 					</ul>
 				</div>
@@ -51,17 +102,780 @@
 
 			</div>
 
-			<div class="col-sm-3" style="background-color: lavender;" id="top-left-date"></div>
+			<div class="col-sm-3" style="background-color: lavender;" id="top-left-date">
+				<div>
+					<ul class="nav justify-content-center">
+						<li class="nav-item"><a class="nav-link" href="#" style="padding: .5em .2em">上午 10:12:36</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" style="padding: .5em .2em"><p style="margin-bottom: 0em;">星期一</p>
+								<p style="font-size: .7em;">2019/5/21</p> </a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#" style="padding: .5em .2em"><p style="margin-bottom: 0em;">多云</p>
+								<p style="font-size: .7em;">20 ℃-25 ℃</p> </a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#" style="padding: .5em .2em"><p style="margin-bottom: 0em;">1和6</p>
+								<p style="font-size: .7em;">限行尾号</p> </a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-4" style="background-color: lavender;">.col-sm-4</div>
-			<div class="col-sm-4" style="background-color: lavenderblush;">.col-sm-8</div>
-			<div class="col-sm-4" style="background-color: lavender;">.col-sm-4</div>
+			<div class="col-sm-4" style="background-color: lavender;">
+				<div class="curve_container">
+					<div id="device_info" class="device_info">
+						<div id="device_info_tile" class="device_info_tile">
+							园区设备总览
+						</div>
+						<div id="device_info_data" class="device_info_data">
+						</div>
+					</div>
+					
+					<div id="device_monitor_info" class="device_info">
+						<div id="device_mmonitor_info_tile" class="device_info_tile">
+							设备监控数据
+						</div>
+						<div id="device_mmonitor_info_tile" class="device_info_data">
+							  <table class="table" >
+							    <thead >
+							      <tr>
+							        <th>设备名称</th>
+							        <th>总数</th>
+							        <th>使用数量</th>
+							        <th>故障数量</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr>
+							        <td>智能路灯</td>
+							        <td>200</td>
+							        <td>190</td>
+							        <td style="color:orange">10</td>
+							      </tr>
+							      <tr>
+							        <td>货运电梯</td>
+							        <td>200</td>
+							        <td>190</td>
+							        <td style="color:orange">10</td>
+							      </tr>
+							      <tr>
+							        <td>客运电梯</td>
+							        <td>200</td>
+							        <td>190</td>
+							        <td style="color:orange">10</td>
+							      </tr>
+							      
+							      <tr>
+							        <td>空调设备</td>
+							        <td>200</td>
+							        <td>190</td>
+							        <td style="color:orange">10</td>
+							      </tr>
+							      <tr>
+							        <td>门禁设备</td>
+							        <td>200</td>
+							        <td>190</td>
+							        <td style="color:orange">10</td>
+							      </tr>
+							      
+							    </tbody>
+  							</table>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="curve_container">
+					<div id="park_people_info" class="device_info">
+						<div id="device_info_tile" class="device_info_tile">
+							园区入园
+						</div>
+						<div id="park_people_data" class="device_info_data">
+						</div>
+					</div>
+					
+					<div id="device_monitor_info" class="device_info">
+						<div id="device_mmonitor_info_tile" class="device_info_tile">
+							出入口刷卡记录
+						</div>
+						<div id="device_mmonitor_info_tile" class="device_info_data">
+							  <table class="table" >
+							    <thead >
+							      <tr>
+							        <th>姓名</th>
+							        <th>地点</th>
+							        <th>时间</th>
+							        <th>状态</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr>
+							        <td>马立群</td>
+							        <td>北门</td>
+							        <td>15:13:45</td>
+							        <td style="color:orange">异常</td>
+							      </tr>
+							      <tr>
+							        <td>万桂芳</td>
+							        <td>北门</td>
+							        <td>15:23:45</td>
+							        <td style="color:orange">异常</td>
+							      </tr>
+							      <tr>
+							        <td>张翰文</td>
+							        <td>北门</td>
+							        <td>16:23:45</td>
+							        <td>正常</td>
+							      </tr>
+							      <tr>
+							        <td>孙晓丽</td>
+							        <td>北门</td>
+							        <td>16:33:45</td>
+							        <td >正常</td>
+							      </tr> 
+							      <tr>
+							        <td>李立群</td>
+							        <td>北门</td>
+							        <td>15:53:45</td>
+							        <td style="color:orange">异常</td>
+							      </tr>  
+							    </tbody>
+  							</table>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="curve_container">
+					<div id="energy_info" class="energy_info">
+						<div id="energy_info_tile" class="device_info_tile">
+							能耗区域用电分析
+						</div>
+						<div id="energy_data" class="device_info_data">
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col-sm-4" style="">
+				<div class="duty_info" id="duty_info">
+					<div class="duty_title">
+						值班安排
+					</div>
+					<div class="door_info">
+						<div class="door_title">东门</div>
+						<div class="leader">负责人：江小白 13612345687</div>
+						<div>人&nbsp;&nbsp;&nbsp;员：王文强 刘百芳 张万和</div>
+					</div>
+					<div class="door_info">
+						<div class="door_title">西门</div>
+						<div class="leader">负责人：江小白 13612345687</div>
+						<div>人&nbsp;&nbsp;&nbsp;员：王文强 刘百芳 张万和</div>
+					</div>
+					<div class="door_info">
+						<div class="door_title">南门</div>
+						<div class="leader">负责人：江小白 13612345687</div>
+						<div>人&nbsp;&nbsp;&nbsp;员：王文强 刘百芳 张万和</div>
+					</div>
+					<div class="door_info">
+						<div class="door_title">北门</div>
+						<div class="leader">负责人：江小白 13612345687</div>
+						<div>人&nbsp;&nbsp;&nbsp;员：王文强 刘百芳 张万和</div>
+					</div>
+				</div>
+				
+			<div id="viewport" style="width:100%;height:400px;"> </div>
+			<div class="monitor_wall_info" id="monitor_wall_info" style="margin-bottom:1px;">
+					<div class="duty_title">
+						视频监控
+					</div>
+					<div class="door_video_info">
+						<div class="area_title">东门</div>
+						<div class="video_info">
+							<img src="/images/east_door.png" style="height:100px;width:100%;"/>
+						</div>
+					</div>
+					<div class="door_video_info">
+						<div class="area_title">西门</div>
+						<div class="video_info">
+							<img src="/images/west_door.png" style="height:100px;width:100%;"/>
+						</div>
+					</div>
+					<div class="door_video_info">
+						<div class="area_title">南门</div>
+						<div class="video_info">
+							<img src="/images/south_door.png" style="height:100px;width:100%;"/>
+						</div>
+					</div>
+					<div class="door_video_info">
+						<div class="area_title">北门</div>
+						<div class="video_info">
+							<img src="/images/north_door.png" style="height:100px;width:100%;"/>
+						</div>
+					</div>
+			</div>
+			
+			</div>
+			
+
+			<div class="col-sm-4" style="background-color: lavender;">
+				<div class="curve_container">
+					<div id="car_info" class="device_info">
+						<div id="device_info_tile" class="device_info_tile">
+							车辆统计
+						</div>
+						<div id="car_data" class="device_info_data">
+						</div>
+					</div>
+					
+					<div id="parking_space_info" class="device_info">
+						<div id="parking_space_info_tile" class="device_info_tile">
+							车位信息
+						</div>
+						<div id="parking_space_info_tile" class="device_info_data">
+							  <table class="table" >
+							    <thead >
+							      <tr>
+							        <th>区域</th>
+							        <th>车位数量</th>
+							        <th>使用数量</th>
+							        <th>剩余数量</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr>
+							        <td>A区</td>
+							        <td>500</td>
+							        <td>200</td>
+							        <td >300</td>
+							      </tr>
+							      <tr>
+							        <td>B区</td>
+							        <td>500</td>
+							        <td>200</td>
+							        <td >300</td>
+							      </tr>
+							      <tr>
+							        <td>C区</td>
+							        <td>500</td>
+							        <td>200</td>
+							        <td >300</td>
+							      </tr>
+							      <tr>
+							        <td>D区</td>
+							        <td>500</td>
+							        <td>200</td>
+							        <td >300</td>
+							      </tr>
+							      <tr>
+							        <td>E区</td>
+							        <td>500</td>
+							        <td>200</td>
+							        <td >300</td>
+							      </tr>
+							    </tbody>
+  							</table>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="curve_container">
+					<div id="alert_info" class="device_info">
+						<div id="device_info_tile" class="device_info_tile">
+							报警统计
+						</div>
+						<div id="alert_data" class="device_info_data">
+						</div>
+					</div>
+					
+					<div id="alert_type_info" class="device_info">
+						<div id="device_info_tile" class="device_info_tile">
+							报警分布
+						</div>
+						<div id="alert_type_data" class="device_info_data">
+						</div>
+					</div>
+					
+				</div>
+				
+				
+				<div class="curve_container">
+					<div id="alert_change_info" class="energy_info">
+						<div id="device_info_tile" class="device_info_tile">
+							报警变化
+						</div>
+						<div id="alert_change_data" class="device_info_data">
+						</div>
+					</div>
+					
+				</div>
+				
+				
+			</div>
+				
+
 		</div>
 	</div>
 
 </body>
+
+<script type="text/javascript">
+$('document').ready(function () {
+	var fault_chart = echarts.init(document.getElementById('device_info_data'));
+
+	fault_option = {
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    series : [
+		        {
+		            name:'设备信息',
+		            type:'pie',
+		            radius : '55%',
+		            center: ['40%', '50%'],
+		            data:[
+		                {value:335, name:'在线设备'},
+		                {value:20, name:'离线设备'},
+		                {value:50, name:'故障故障'}
+		            ].sort(function (a, b) { return a.value - b.value; }),
+		            label: {
+		                normal: {
+		                    textStyle: {
+		                        color: 'rgba(0, 0, 0, 1.0)'
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    lineStyle: {
+		                        color: 'rgba(0, 0, 0, 1.0)'
+		                    },
+		                    smooth: 0.2,
+		                    length: 10,
+		                    length2: 20
+		                }
+		            },
+		            itemStyle: {
+		                normal: {
+		                    shadowBlur: 20,
+		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                }
+		            },
+
+		            animationType: 'scale',
+		            animationEasing: 'elasticOut',
+		            animationDelay: function (idx) {
+		                return Math.random() * 200;
+		            }
+		        }
+		    ]
+		};
+
+	fault_chart.setOption(fault_option);
+	
+	
+	var park_people_chart = echarts.init(document.getElementById('park_people_data'));
+
+	park_people_option = {
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    legend: {
+		        show:true,
+		        orient:'horizontal'
+		    },
+		    series : [
+		        {
+		            name:'员工信息',
+		            type:'pie',
+		            radius : '55%',
+		            center: ['40%', '50%'],
+		            data:[
+		                {value:1335, name:'在园员工 1335'},
+		                {value:120, name:'离园员工 120'}
+		            ].sort(function (a, b) { return a.value - b.value; }),
+		            label: {
+		                normal: {
+		                	show:false,
+		                    textStyle: {
+		                        color: 'rgba(0, 0, 0, 1.0)'
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+							show:false
+		                }
+		            },
+		            itemStyle: {
+		                normal: {
+		                    shadowBlur: 20,
+		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                }
+		            },
+
+		            animationType: 'scale',
+		            animationEasing: 'elasticOut',
+		            animationDelay: function (idx) {
+		                return Math.random() * 200;
+		            }
+		        }
+		    ]
+		};
+
+	park_people_chart.setOption(park_people_option);
+	
+	
+    var energy_curve = echarts.init(document.getElementById('energy_data'));
+
+    energy_curve_option = {
+            title: {
+                text: '电-19170度',
+
+    	        textStyle: {
+    	        	fontWeight: 'normal',
+    	        	color: '#000000'
+    	      	},
+            },
+    	    tooltip: {
+    	        trigger: 'axis'
+    	    },
+            legend: {
+                data:['一号楼','二号楼','三号楼'],
+    	        textStyle: {
+    	        	fontWeight: 'normal',
+    	        	color: '#000000'
+    	      	},
+            },
+    	    grid: {
+    	        left: '3%',
+    	        right: '4%',
+    	        bottom: '3%',
+    	        containLabel: true
+    	    },
+    	    xAxis: {
+    	        type: 'category',
+       	          axisLine: {
+       	              lineStyle: {
+       	                color:'#000000'
+       	              }
+       	            },
+    	        boundaryGap: false,
+    	        data: ['9:00','9:30','10:00','10:30','11:00','11:30','12:00']
+    	    },
+    	    yAxis: {
+    	        type: 'value',
+    	        max:4000,
+                splitLine: {
+                    show: false
+                },
+       	          axisLine: {
+       	              lineStyle: {
+       	                color:'#000000',
+       	              }
+       	            },
+    	    },
+    	    series: [
+    	        {
+    	            name:'一号楼',
+    	            type:'line',
+    	            data:[1200, 1320, 1010, 1340, 1850, 1900, 2100],
+    	            smooth: true,
+                    itemStyle : {
+                        normal : {
+                            lineStyle:{
+                                width:2,
+                            }
+                        }
+                    },
+    	        },
+    	        {
+    	            name:'二号楼',
+    	            type:'line',
+    	            data:[1000, 1820, 1910, 2340, 2900, 3300, 3100],
+    	            smooth: true,
+                    itemStyle : {
+                        normal : {
+                            lineStyle:{
+                                width:2,
+                            }
+                        }
+                    },
+    	        },
+    	        {
+    	            name:'三号楼',
+    	            type:'line',
+    	            data:[1500, 2320, 2010, 1540, 1900, 2300, 3300],
+    	            smooth: true,
+                    itemStyle : {
+                        normal : {
+                            lineStyle:{
+                                width:2,
+                            }
+                        }
+                    },
+    	        }
+    	    ]
+    	};
+
+    
+    energy_curve.setOption(energy_curve_option);
+    
+    
+	var parking_space_chart = echarts.init(document.getElementById('car_data'));
+
+	parking_space_option = {
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    series : [
+		        {
+		            name:'车辆信息',
+		            type:'pie',
+		            radius : '50%',
+		            center: ['40%', '50%'],
+		            data:[
+		                {value:535, name:'员工车辆'},
+		                {value:120, name:'公务车辆'},
+		                {value:150, name:'应急车辆'},
+		                {value:100, name:'外来车辆'}
+		            ].sort(function (a, b) { return a.value - b.value; }),
+		            label: {
+		                normal: {
+		                    textStyle: {
+		                        color: 'rgba(0, 0, 0, 1.0)'
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    lineStyle: {
+		                        color: 'rgba(0, 0, 0, 1.0)'
+		                    },
+		                    smooth: 0.2,
+		                    length: 5,
+		                    length2: 10
+		                }
+		            },
+		            itemStyle: {
+		                normal: {
+		                    shadowBlur: 20,
+		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                }
+		            },
+
+		            animationType: 'scale',
+		            animationEasing: 'elasticOut',
+		            animationDelay: function (idx) {
+		                return Math.random() * 100;
+		            }
+		        }
+		    ]
+		};
+
+	parking_space_chart.setOption(parking_space_option);
+	
+	
+	var alert_chart = echarts.init(document.getElementById('alert_data'));
+
+	alert_option = {
+		    legend: {
+		        show:true,
+		        orient:'horizontal'
+		    },
+		    series : [
+		        {
+		            name:'车辆信息',
+		            type:'pie',
+		            radius : ['50%', '70%'],
+		            center: ['40%', '50%'],
+		            data:[
+		                {value:1880, name:'已处理 1180'},
+		                {value:10, name:'未处理 10'}
+		            ].sort(function (a, b) { return a.value - b.value; }),
+		            label: {
+		                normal: {
+			            	show:true,
+			            	position:'center',
+	                       formatter:function (argument) {
+	                            var html;
+	                            html='1890';
+	                            return html;
+	                        },
+		                    textStyle: {
+		                        color: 'rgba(0, 0, 0, 1.0)'
+		                    }
+		                }
+		            },
+		            itemStyle: {
+		                normal: {
+		                    shadowBlur: 20,
+		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                }
+		            },
+
+		            animationType: 'scale',
+		            animationEasing: 'elasticOut',
+		            animationDelay: function (idx) {
+		                return Math.random() * 100;
+		            }
+		        }
+		    ]
+		};
+
+	alert_chart.setOption(alert_option);
+	
+	
+	var alert_type_chart = echarts.init(document.getElementById('alert_type_data'));
+
+	alert_type_option = {
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    series : [
+		        {
+		            name:'报警分布',
+		            type:'pie',
+		            radius : '60%',
+		            center: ['40%', '50%'],
+		            data:[
+		                {value:235, name:'非法入侵'},
+		                {value:20, name:'可疑人员'},
+		                {value:150, name:'设备故障'},
+		                {value:100, name:'可疑车辆'},
+		                {value:150, name:'火灾警报'},
+		                {value:120, name:'燃气泄露'},
+		                {value:90, name:'其它'}
+		            ].sort(function (a, b) { return a.value - b.value; }),
+		            label: {
+		                normal: {
+		                    textStyle: {
+		                        color: 'rgba(0, 0, 0, 1.0)'
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    lineStyle: {
+		                        color: 'rgba(0, 0, 0, 1.0)'
+		                    },
+		                    smooth: 0.2,
+		                    length: 5,
+		                    length2: 5
+		                }
+		            },
+		            itemStyle: {
+		                normal: {
+		                    shadowBlur: 20,
+		                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+		                }
+		            },
+
+		            animationType: 'scale',
+		            animationEasing: 'elasticOut',
+		            animationDelay: function (idx) {
+		                return Math.random() * 100;
+		            }
+		        }
+		    ]
+		};
+
+	alert_type_chart.setOption(alert_type_option);
+	
+	
+    var alert_change_curve = echarts.init(document.getElementById('alert_change_data'));
+
+    alert_change_option = {
+    	    xAxis: {
+    	        type: 'category',
+       	          axisLine: {
+       	              lineStyle: {
+       	                color:'#000000'
+       	              }
+       	            },
+    	        boundaryGap: false,
+    	        data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+    	    },
+    	    yAxis: {
+    	        type: 'value',
+    	        max:500,
+                splitLine: {
+                    show: false
+                },
+       	          axisLine: {
+       	              lineStyle: {
+       	                color:'#000000',
+       	              }
+       	            },
+    	    },
+    	    series: [
+    	        {
+    	            name:'报警变化',
+    	            type:'line',
+    	            data:[200, 250, 300, 340, 350, 400, 480, 300, 340, 350, 200, 180],
+    	            smooth: true,
+    	            areaStyle: {}
+    	        }
+    	    ]
+    	};
+
+    
+    alert_change_curve.setOption(alert_change_option);
+    
+
+	
+});
+
+var projId = "e3b8902b-2ae3-42f6-9bb8-16d069c38bd7";
+
+var bimEngine = new BIMVIZ.RenderEngine({
+    projectId: projId,
+    renderDomId: 'viewport',
+    ip: "cloud.bimviz.io",
+    port: 10001,
+    key: '233c9611-de2d-46ae-89eb-6ddd7653add1',
+    resizeMode: 'fullpage',
+	resourcePath:'/bimviz/sdk/viz/data/'
+});
+
+
+var gid = "c9d04e60-64d6-4e0d-aa0b-e2a9ca0b390b-00074c26";
+
+
+bimEngine.addListener(BIMVIZ.EVENT.OnSceneLoadCompleted,function(evt){
+	evt.args.cancel = true;
+
+	bimEngine.flyToElement(gid);
+	bimEngine.changeElementRGBA(gid,[1.0,0,1.0]);
+	bimEngine.flyToElementByBox(gid,3);
+
+    var pos=bimEngine.getElementAxisAlignedBox(gid).getCenter().sub(bimEngine.CenterPosition);  //偏移量
+    var html='<div id="test" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;">' +
+        '通道被阻塞<img style="width: 20px;height: 20px;" src="/bimviz/sdk/viz/data/images/markers/1.png" alt="">' +
+        '</div>';
+    var marekrmgr=bimEngine.getMarkerManager();
+    var mareker=new BIMVIZ.HtmlMarker(1,"test","test",pos,html,BIMVIZ.Align2D.Center,0,"text","文字");
+    marekrmgr.addHtmlMarker(mareker);
+	
+	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d77c",false);
+	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d951",false);
+	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d952",false);
+	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d953",false);
+	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d954",false);
+	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d950",false);
+
+});
+
+// 开始加载数据
+bimEngine.start();
+
+</script>
+
 </html>
