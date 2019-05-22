@@ -1,3 +1,24 @@
+body {
+    width: 100%;
+    height: 100%;
+    background: url(../images/index_bg.png) left top no-repeat;
+    background-size: 100% 100%;
+}
+.up_text{
+	margin-bottom: 0em;
+	font-size:.9em;
+	color:#40C9C1;
+}
+.maint_title{
+	line-height: 2.8rem;
+    text-align: center;
+    font-size: 2.6rem;
+    color: #0e94ea;
+
+    float: left; 
+    width: 40%;
+    letter-spacing: 0.15em;
+}
 .curve_container
 {
 	width:100%;
@@ -12,13 +33,30 @@
 	display:block;	
 }
 
+.table{
+	border:0px;
+}
+.table thead th{
+    border:0px;
+    }
+
+.table>tbody>tr>td{
+    border:0px;
+    }
 .device_info
 {
-	width:50%;
+	width:48%;
 	height:100%;
 	float:left;
 	display:inline;
-	backgroud-color:red;	
+	border-radius:10px;
+	background: -webkit-linear-gradient(#142537, #0C193A); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#142537, #0C193A); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#142537, #0C193A); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#142537, #0C193A); /* 标准的语法 */
+    
+	margin-bottom:5px;
+	margin-left:5px;
 }
 .device_info_tile
 {
@@ -26,6 +64,10 @@
 	height:40px;
 	display:block;
 	text-align:left;
+	color:#39AECF;
+	font-size:1.2em;
+	font-weight:bold;
+	font-family:'宋体';
 }
 .device_info_data
 {
@@ -35,50 +77,76 @@
 }
 .table > thead{
 	font-size:0.8em;
+	color:white;
 }
 .table > tbody{
 	font-size:0.8em;
+	color:white;
 }
 .energy_info{
 	width:100%;
 	height:100%;
+	
+	border-radius:10px;
+	margin-bottom:5px;
+	
+	background: -webkit-linear-gradient(#142537, #0C193A); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#142537, #0C193A); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#142537, #0C193A); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#142537, #0C193A); /* 标准的语法 */
 }
 .duty_info{
 	height:200px;
-	background-color:#EDEDED;
+	border-radius:10px;
+	margin-bottom:5px;
+	
+	background: -webkit-linear-gradient(#142537, #0C193A); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#142537, #0C193A); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#142537, #0C193A); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#142537, #0C193A); /* 标准的语法 */
 }
 .duty_title{
 	width:100%;
 	height:auto;
-	font-size:1.25em;
-	color:#000000;
+	font-size:1.2em;
+	color:#39AECF;
+	font-weight:bold;
 }
 .door_info{
 	width:49%;
 	height:auto;
 	font-size:0.9em;
-	color:#000000;
+	color:#ffffff;
 	display:inline;
 	float:left;
-	margin-bottom:2px;
+	margin-bottom:5px;
 	margin-left:2px;
 }
 .door_title{
 	font-size:1.0em;
+	color:#39AECF;
+	font-weight:bold;
 }
 .monitor_wall_info{
 	width:100%;
 	display:block;
 	position:absolute;
 	bottom:5px;
+	
+	border-radius:10px;
+	margin-bottom:5px;
+	
+	background: -webkit-linear-gradient(#142537, #0C193A); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#142537, #0C193A); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#142537, #0C193A); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#142537, #0C193A); /* 标准的语法 */
 }
 .door_video_info{
-	width:48%;
+	width:46%;
 	height:auto;
 	display:inline;
 	float:left;
-	border:1px solid #EDEDED;
-	margin-left:2px;
+	margin-left:5px;
 	margin-bottom:2px;
 }
 .area_title{
