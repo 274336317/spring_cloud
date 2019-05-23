@@ -161,3 +161,7 @@ body {
 	margin-top:5px;
 	margin-bottom:5px;
 }
+ .modal.fade.in{
+      top:top;
+      left:left;
+  }

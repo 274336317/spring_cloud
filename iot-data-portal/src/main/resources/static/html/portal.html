@@ -63,7 +63,7 @@
 <body>
 	<div class="container-fluid">
 		<div class="row" style="">
-			<div class="col-sm-2 text-center"  id="top-left-weather">
+			<div class="col-sm-2 text-center"  id="top-left-weather" data-toggle="modal" data-target="#myModal" onclick="showBIMVIZ();">
 				<div>
 					<ul class="nav justify-content-center">
 						<li class="nav-item"><a class="nav-link" href="#" style="padding: .5em .2em;color:#40C9C1;">海淀园区</a></li>
@@ -286,7 +286,7 @@
 					</div>
 				</div>
 				
-			<div id="viewport" style="width:100%;height:400px;"> 
+			<div id="park_view" style="width:100%;height:400px;"> 
 				<img src="../images/park_view.png" style="width:100%;height:100%;"/>
 			</div>
 			<div class="monitor_wall_info" id="monitor_wall_info" style="margin-bottom:1px;">
@@ -389,6 +389,7 @@
 						<div id="device_info_tile" class="device_info_tile">
 							报警统计
 						</div>
+
 						<div id="alert_data" class="device_info_data">
 						</div>
 					</div>
@@ -422,10 +423,34 @@
 		</div>
 	</div>
 
+	  <!-- 模态框 -->
+	  <div class="modal fade" id="myModal" >
+	    <div class="modal-dialog modal-dialog-centered" id="myDialog">
+	      <div class="modal-content"  id="modal_content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	   
+	        <!-- 模态框主体 -->
+	        <div class="modal-body" id="viewport" style="width:100%;height:100%;">
+			          
+	        </div>
+	   
+	      </div>
+	    </div>
+	  </div>
+
 </body>
 
 <script type="text/javascript">
 $('document').ready(function () {
+	
+	var width = document.body.clientWidth;
+	var height = document.body.clientHeight - 100;
+
+	document.getElementById('myDialog').style.cssText = "width:"+width.toString()+"px;" + "height:" + height.toString() + "px;position:absolute;left:0;top:0;"; 
+	document.getElementById('modal_content').style.cssText = "width:"+width.toString()+"px;" + "height:" + height.toString() + "px;position:absolute;left:0;top:0;"; 
+	
 	var fault_chart = echarts.init(document.getElementById('device_info_data'));
 
 	fault_option = {
@@ -846,50 +871,66 @@ $('document').ready(function () {
 	
 });
 
-/***
-var projId = "e3b8902b-2ae3-42f6-9bb8-16d069c38bd7";
+var bimEngine = null;
 
-var bimEngine = new BIMVIZ.RenderEngine({
-    projectId: projId,
-    renderDomId: 'viewport',
-    ip: "cloud.bimviz.io",
-    port: 10001,
-    key: '233c9611-de2d-46ae-89eb-6ddd7653add1',
-    resizeMode: 'fullpage',
-	resourcePath:'/bimviz/sdk/viz/data/'
-});
+function showBIMVIZ(){
+		
+	/**
+	var width = document.body.clientWidth;
+	var height = document.body.clientHeight;
+
+	document.getElementById('viewport').style.cssText = "width:"+width.toString()+"px;" + "height:" + height.toString() + "px;"; 
+	**/
+	if(!bimEngine){
+		var projId = "e3b8902b-2ae3-42f6-9bb8-16d069c38bd7";
+
+		bimEngine = new BIMVIZ.RenderEngine({
+		    projectId: projId,
+		    renderDomId: 'viewport',
+		    ip: "113.108.71.7",
+		    port: 7005,
+		    key: '233c9611-de2d-46ae-89eb-6ddd7653add1',
+		    resizeMode: 'fullpage',
+			resourcePath:'/bimviz/sdk/viz/data/'
+		});
 
 
-var gid = "c9d04e60-64d6-4e0d-aa0b-e2a9ca0b390b-00074c26";
+		var gid = "c9d04e60-64d6-4e0d-aa0b-e2a9ca0b390b-00074c26";
 
 
-bimEngine.addListener(BIMVIZ.EVENT.OnSceneLoadCompleted,function(evt){
-	evt.args.cancel = true;
+		bimEngine.addListener(BIMVIZ.EVENT.OnSceneLoadCompleted,function(evt){
+			evt.args.cancel = true;
 
-	bimEngine.flyToElement(gid);
-	bimEngine.changeElementRGBA(gid,[1.0,0,1.0]);
-	bimEngine.flyToElementByBox(gid,3);
+			bimEngine.flyToElement(gid);
+			bimEngine.changeElementRGBA(gid,[1.0,0,1.0]);
+			bimEngine.flyToElementByBox(gid,5);
 
-    var pos=bimEngine.getElementAxisAlignedBox(gid).getCenter().sub(bimEngine.CenterPosition);  //偏移量
-    var html='<div id="test" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;">' +
-        '通道被阻塞<img style="width: 20px;height: 20px;" src="/bimviz/sdk/viz/data/images/markers/1.png" alt="">' +
-        '</div>';
-    var marekrmgr=bimEngine.getMarkerManager();
-    var mareker=new BIMVIZ.HtmlMarker(1,"test","test",pos,html,BIMVIZ.Align2D.Center,0,"text","文字");
-    marekrmgr.addHtmlMarker(mareker);
+		    var pos=bimEngine.getElementAxisAlignedBox(gid).getCenter().sub(bimEngine.CenterPosition);  //偏移量
+		    var html='<div id="test" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;">' +
+		        '通道被阻塞<img style="width: 20px;height: 20px;" src="/bimviz/sdk/viz/data/images/markers/1.png" alt="">' +
+		        '</div>';
+		    var marekrmgr=bimEngine.getMarkerManager();
+		    var mareker=new BIMVIZ.HtmlMarker(1,"test","test",pos,html,BIMVIZ.Align2D.Center,0,"text","文字");
+		    marekrmgr.addHtmlMarker(mareker);
+			
+			bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d77c",false);
+			bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d951",false);
+			bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d952",false);
+			bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d953",false);
+			bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d954",false);
+			bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d950",false);
+
+		});
+
+		// 开始加载数据
+		bimEngine.start();
+	}
+
 	
-	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d77c",false);
-	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d951",false);
-	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d952",false);
-	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d953",false);
-	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d954",false);
-	bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d950",false);
 
-});
+};
 
-// 开始加载数据
-bimEngine.start();
-***/
+
 </script>
 
 </html>
