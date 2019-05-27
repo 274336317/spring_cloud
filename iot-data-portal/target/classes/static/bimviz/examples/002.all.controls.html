@@ -73,6 +73,14 @@
         //         key：用户的key值
         // note end
         
+        function flytoElement(gid){
+        	alert9("ads");
+        	bimEngine.flyToElementByBox(gid,3);
+        }
+        function flytoElement2(){
+        	alert9("ads");
+        }
+        
 		var projId = "e3b8902b-2ae3-42f6-9bb8-16d069c38bd7";
 
         var bimEngine = new BIMVIZ.RenderEngine({
@@ -182,6 +190,13 @@
 		
         var gid = "c9d04e60-64d6-4e0d-aa0b-e2a9ca0b390b-00074c26";
         
+        var gid2 = "405536b1-a68a-478a-8917-6c50af43a2b3-00079f66";
+        
+        var gid3 = "ba26f402-2246-446e-ad38-f2235dc47e48-0006a40a";
+        
+        var gid4 = "e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008cf88";
+        
+
         
         bimEngine.addListener(BIMVIZ.EVENT.ProjectOverviewLoaded,function(evt){
         	evt.args.bimScene.ElementList;
@@ -192,21 +207,51 @@
         bimEngine.addListener(BIMVIZ.EVENT.OnSceneLoadCompleted,function(evt){
         	evt.args.cancel = true;
         	//bimEngine.getHighlightManager().highlightElement(gid);
-        	bimEngine.flyToElement(gid);
+        	//bimEngine.flyToElement(gid);
         	//bimEngine.scaleElement(gid,10,1,1);
         	bimEngine.changeElementRGBA(gid,[1.0,0,1.0]);
-        	bimEngine.flyToElementByBox(gid,3);
+        	bimEngine.changeElementRGBA(gid2,[1.0,0,1.0]);
+        	bimEngine.changeElementRGBA(gid3,[1.0,0,1.0]);
+        	bimEngine.changeElementRGBA(gid4,[1.0,0,1.0]);
+        	
+        	//bimEngine.flyToElementByBox(gid,2);
 
             var pos=bimEngine.getElementAxisAlignedBox(gid).getCenter().sub(bimEngine.CenterPosition);  //偏移量
-            // var html='<div id="test" style="position:absolute;padding: 5px 10px;color: #ffffff;background: green;border-radius: 5px;">test</div>';
-            var html='<div id="test" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;">' +
-                '通道被阻塞<img style="width: 20px;height: 20px;" src="../sdk/viz/data/images/markers/1.png" alt="">' +
+            var pos2=bimEngine.getElementAxisAlignedBox(gid2).getCenter().sub(bimEngine.CenterPosition);  //偏移量
+            var pos3=bimEngine.getElementAxisAlignedBox(gid3).getCenter().sub(bimEngine.CenterPosition);  //偏移量
+            var pos4=bimEngine.getElementAxisAlignedBox(gid4).getCenter().sub(bimEngine.CenterPosition);  //偏移量
+            
+
+            var html='<div id="test" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px; cursor:cross;">' +
+                '故障  ' +
                 '</div>';
-            var marekrmgr=bimEngine.getMarkerManager();
+                
+            var html2='<div id="test2" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;" >' +
+            '故障' +
+            '</div>';
+            
+            var html3='<div id="test3" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;" >' +
+            '故障' +
+            '</div>';
+            
+            var html4='<div id="test4" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;" >' +
+            '故障' +
+            '</div>';
+                
+            var marekrmgr = bimEngine.getMarkerManager();
+            
             var mareker=new BIMVIZ.HtmlMarker(1,"test","test",pos,html,BIMVIZ.Align2D.Center,0,"text","文字");
+            var mareker2=new BIMVIZ.HtmlMarker(2,"test2","test2",pos2,html2,BIMVIZ.Align2D.Center,0,"text","文字");
+            var mareker3=new BIMVIZ.HtmlMarker(3,"test3","test3",pos3,html3,BIMVIZ.Align2D.Center,0,"text","文字");
+            var mareker4=new BIMVIZ.HtmlMarker(4,"test4","test4",pos4,html4,BIMVIZ.Align2D.Center,0,"text","文字");
+            
             marekrmgr.addHtmlMarker(mareker);
+            marekrmgr.addHtmlMarker(mareker2);
+            marekrmgr.addHtmlMarker(mareker3);
+            marekrmgr.addHtmlMarker(mareker4);
         	
         	
+            /**
     		//bimEngine.setElementVisible(otherGid,false);
     		bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d77c",false);
     		bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d951",false);
@@ -214,11 +259,18 @@
     		bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d953",false);
     		bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d954",false);
     		bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d950",false);
+			**/
 
+			document.getElementById("test").onclick = function(){bimEngine.flyToElementByBox(gid,3);};
+			document.getElementById("test2").onclick = function(){bimEngine.flyToElementByBox(gid2,3);};
+			document.getElementById("test3").onclick = function(){bimEngine.flyToElementByBox(gid3,3);};
+			document.getElementById("test4").onclick = function(){bimEngine.flyToElementByBox(gid4,3);};
         });
         
         // 开始加载数据
         bimEngine.start();
+        
+
 
         //bimEngine.getHighlightManager().highlightElement("c9d04e60-64d6-4e0d-aa0b-e2a9ca0b390b-00074c26");
        
