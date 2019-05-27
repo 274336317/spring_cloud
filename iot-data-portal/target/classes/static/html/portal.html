@@ -885,12 +885,10 @@ var projId = "e3b8902b-2ae3-42f6-9bb8-16d069c38bd7";
 var bimEngine = null;
 
 var gid = "c9d04e60-64d6-4e0d-aa0b-e2a9ca0b390b-00074c26";
-
 var gid2 = "405536b1-a68a-478a-8917-6c50af43a2b3-00079f66";
-
 var gid3 = "ba26f402-2246-446e-ad38-f2235dc47e48-0006a40a";
-
 var gid4 = "e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008cf88";
+var gid5 = "da59ec8d-c30e-46b8-8249-7e79f7ad0166-0007960d";
 
 var html='<div id="test" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px; cursor:cross;">' +
 '故障  ' +
@@ -905,6 +903,10 @@ var html3='<div id="test3" style="position:absolute;padding: 5px 10px;color: #ff
 '</div>';
 
 var html4='<div id="test4" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;" >' +
+'故障' +
+'</div>';
+
+var html5='<div id="test5" style="position:absolute;padding: 5px 10px;color: #ffffff;background: red;border-radius: 5px;" >' +
 '故障' +
 '</div>';
 
@@ -924,18 +926,19 @@ function showBIMVIZ(){
 	bimEngine.addListener(BIMVIZ.EVENT.OnSceneLoadCompleted,function(evt){
 		evt.args.cancel = true;
 
-		
-		bimEngine.flyToElement(gid);
+		//bimEngine.flyToElement(gid);
     	bimEngine.changeElementRGBA(gid,[1.0,0,0,1.0]);
     	bimEngine.changeElementRGBA(gid2,[1.0,0,0,1.0]);
     	bimEngine.changeElementRGBA(gid3,[1.0,0,0,1.0]);
     	bimEngine.changeElementRGBA(gid4,[1.0,0,0,1.0]);
+    	bimEngine.changeElementRGBA(gid5,[1.0,0,0,1.0]);
 		//bimEngine.flyToElementByBox(gid,5);
 		
         pos=bimEngine.getElementAxisAlignedBox(gid).getCenter().sub(bimEngine.CenterPosition);  //偏移量
         pos2=bimEngine.getElementAxisAlignedBox(gid2).getCenter().sub(bimEngine.CenterPosition);  //偏移量
         pos3=bimEngine.getElementAxisAlignedBox(gid3).getCenter().sub(bimEngine.CenterPosition);  //偏移量
         pos4=bimEngine.getElementAxisAlignedBox(gid4).getCenter().sub(bimEngine.CenterPosition);  //偏移量
+        pos5=bimEngine.getElementAxisAlignedBox(gid5).getCenter().sub(bimEngine.CenterPosition);  //偏移量
 
 	       
         marekrmgr = bimEngine.getMarkerManager();
@@ -944,11 +947,13 @@ function showBIMVIZ(){
         mareker2=new BIMVIZ.HtmlMarker(2,"test2","test2",pos2,html2,BIMVIZ.Align2D.Center,0,"text","文字");
         mareker3=new BIMVIZ.HtmlMarker(3,"test3","test3",pos3,html3,BIMVIZ.Align2D.Center,0,"text","文字");
         mareker4=new BIMVIZ.HtmlMarker(4,"test4","test4",pos4,html4,BIMVIZ.Align2D.Center,0,"text","文字");
+        mareker5=new BIMVIZ.HtmlMarker(5,"test5","test5",pos5,html5,BIMVIZ.Align2D.Center,0,"text","文字");
         
         marekrmgr.addHtmlMarker(mareker);
         marekrmgr.addHtmlMarker(mareker2);
         marekrmgr.addHtmlMarker(mareker3);
         marekrmgr.addHtmlMarker(mareker4);
+        marekrmgr.addHtmlMarker(mareker5);
         	
 	    /**
 		bimEngine.setElementVisible("e1d4bdfb-2688-47c1-a386-3b48116e5fd2-0008d77c",false);
@@ -963,6 +968,7 @@ function showBIMVIZ(){
 		document.getElementById("test2").onclick = function(){bimEngine.flyToElementByBox(gid2,3);};
 		document.getElementById("test3").onclick = function(){bimEngine.flyToElementByBox(gid3,3);};
 		document.getElementById("test4").onclick = function(){bimEngine.flyToElementByBox(gid4,3);};
+		document.getElementById("test5").onclick = function(){bimEngine.flyToElementByBox(gid5,3);};
 	});
 
 	// 开始加载数据
